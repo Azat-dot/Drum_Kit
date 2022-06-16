@@ -1,23 +1,27 @@
 
 
-
+// sound by clicking mouse
 for ( i = 0; i < document.querySelectorAll(".drum").length; i++) {
     
     document.querySelectorAll(".drum")[i].addEventListener("click", function() {
         
-        this.style.color = "blue"
-        let buttonInnerHTML = this.innerHTML;        
+        
+        let buttonInnerHTML = this.innerHTML;  
+             
  
-        sound(buttonInnerHTML)
+        sound(buttonInnerHTML);
+        buttonAnimation(buttonInnerHTML);
 
         })
     }
 
-
+// sound by pressing keys
     document.addEventListener("keypress", function(e) {
         sound(e.key);
+        buttonAnimation(e.key);
     })
 
+    //function for sound
 
     function sound(key) {
         switch (key) {
@@ -53,4 +57,15 @@ for ( i = 0; i < document.querySelectorAll(".drum").length; i++) {
             default: console.log(key);
     
     }
+}
+
+// function for animation afte pressing keys or clikcikg
+
+function buttonAnimation(currentKey) {
+    let activeButton = document.querySelector("." + currentKey)
+    activeButton.classList.add("pressed");
+
+    setTimeout(function() {
+        activeButton.classList.remove("pressed");
+    }, 100)
 }
