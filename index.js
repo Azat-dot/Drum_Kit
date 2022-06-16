@@ -1,13 +1,26 @@
 
 
-var audio = new Audio('tom-1.mp3')
+
 for ( i = 0; i < document.querySelectorAll(".drum").length; i++) {
+    
     document.querySelectorAll(".drum")[i].addEventListener("click", function() {
         
         this.style.color = "blue"
-var buttonInnerHTML = this.innerHTML;        
+        let buttonInnerHTML = this.innerHTML;        
  
-        switch (buttonInnerHTML) {
+        sound(buttonInnerHTML)
+
+        })
+    }
+
+
+    document.addEventListener("keypress", function(e) {
+        sound(e.key);
+    })
+
+
+    function sound(key) {
+        switch (key) {
             case "w":
                 var tom1 = new Audio("sounds/tom-1.mp3")
                 tom1.play();
@@ -37,20 +50,7 @@ var buttonInnerHTML = this.innerHTML;
                 kick.play();
             break;
         
-            default: console.log(buttonInnerHTML);
-               
-        }
-    })
+            default: console.log(key);
+    
+    }
 }
-
- //// calculator in console
-// function add( num1, num2) {
-//     return num1 + num2; }
-// function subtrackt(num1, num2) {
-//     return num2 - num1;}
-// function multyplay(num1, num2) {
-//     return num1 * num2}
-// function divide(num1, num2) {
-//     return num2 / num1}
-// function calculator( num1, num2, operator) { return operator(num1, num2)};
-
